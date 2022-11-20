@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
 import { ResultsComponent } from './pages/results/results.component';
 import { PollComponent } from './pages/poll/poll.component';
-import { ToolbarComponent } from './pages/toolbar/toolbar.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -24,8 +23,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     AppComponent,
     HomeComponent,
     ResultsComponent,
-    PollComponent,
-    ToolbarComponent
+    PollComponent
   ],
   imports: [
     FormsModule,
