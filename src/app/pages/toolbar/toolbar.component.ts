@@ -30,7 +30,5 @@ export class ToolbarComponent implements OnInit {
           this.sidenav.open();
         }
       });
-
   }
-
 }
