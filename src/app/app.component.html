@@ -1,28 +1,4 @@
-<mat-toolbar class="mat-elevation-z8">
-  <button mat-icon-button *ngIf="sidenav.mode === 'over'" (click)="sidenav.toggle()">
-      <mat-icon *ngIf="!sidenav.opened">menu</mat-icon>
-      <mat-icon *ngIf="sidenav.opened">close</mat-icon>
-  </button>
-</mat-toolbar>
-
-<mat-sidenav-container>
-  <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8">
-      <button mat-button class="menu-button" routerLink="/poll">
-          <mat-icon>checklist</mat-icon>
-          <span>Encuesta</span>
-      </button>
-      <button mat-button class="menu-button" routerLink="/results">
-          <mat-icon>poll</mat-icon>
-          <span>Resultados</span>
-      </button>
-      <button mat-button class="menu-button" routerLink="/about">
-          <mat-icon>info</mat-icon>
-          <span>Acerca De</span>
-      </button>
-  </mat-sidenav>
-  <mat-sidenav-content>
-      <div class="content mat-elevation-z8">
-          <router-outlet></router-outlet>
-      </div>
-  </mat-sidenav-content>
-</mat-sidenav-container>
+<app-sidebar [isExpanded]="sidebarExpanded" (toggleSidebar)="sidebarExpanded = !sidebarExpanded"></app-sidebar>
+<div class="content" [ngClass]="{ 'sidebarExpanded': sidebarExpanded }">
+  <router-outlet></router-outlet>
+</div>
