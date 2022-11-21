@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PollService } from '../../services/PollService';
 
 @Component({
   selector: 'app-results',
@@ -7,9 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ResultsComponent implements OnInit {
 
-  constructor() { }
+  constructor(public pollService: PollService) { }
 
   ngOnInit(): void {
+    this.pollService.getResults().subscribe({
+      complete: () => {
+        console.log('Success GET');
+      },
+      error: (error) => {
+        console.log(error);
+      },
+      next: (resp) => { 
+        console.log(resp);
+      }
+    });
   }
 
 }

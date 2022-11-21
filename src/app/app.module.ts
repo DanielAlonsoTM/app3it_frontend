@@ -19,6 +19,10 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSelectModule } from '@angular/material/select';
 
+import { HttpClientModule } from '@angular/common/http';
+
+import { PollService } from './services/PollService';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,9 +42,10 @@ import { MatSelectModule } from '@angular/material/select';
     MatIconModule,
     MatSidenavModule,
     MatFormFieldModule,
-    MatSelectModule
+    MatSelectModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [PollService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

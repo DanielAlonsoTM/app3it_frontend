@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
+import { PollService } from '../../services/PollService';
 
 @Component({
   selector: 'app-poll',
@@ -19,7 +20,7 @@ export class PollComponent implements OnInit {
     { value: 'clasica', viewValue: 'Clásica' },
   ];
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder, public pollService: PollService) { }
 
   ngOnInit() {
     this.createForm();
@@ -53,5 +54,19 @@ export class PollComponent implements OnInit {
 
   onSubmit(post: any) {
     this.post = post;
+
+    this.pollService.addPoll(post).subscribe(
+      {
+        complete: () => {
+          console.log('Success POST');
+        },
+        error: (error) => {
+          console.log(error)
+        },
+        next: (resp) => {
+          console.log(resp);
+        },
+      }
+    );
   }
 }
