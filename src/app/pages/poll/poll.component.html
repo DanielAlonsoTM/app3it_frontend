@@ -6,6 +6,9 @@
             <div class="form-group">
                 <label>Estilo Musical</label>
                 <select formControlName="genre" class="form-control">
+                    <option disabled value="default">
+                        Seleccionar estilo
+                    </option>
                     <option *ngFor="let genre of genres" [ngValue]="genre.value">
                         {{ genre.viewValue }}
                     </option>
@@ -14,7 +17,15 @@
 
             <div class="form-group">
                 <label>Correo Electronico</label>
-                <input type="email" formControlName="email" class="form-control" maxlength="20">
+                <input type="email" formControlName="email" class="form-control" maxlength="20" email="true"
+                    [class.is-invalid]="formPoll.get('email')?.invalid && formPoll.get('email')?.touched">
+                <div
+                    *ngif="(formPoll.get('email').invalid && formPoll.get('email').touched) || formPoll.get('email').dirty">
+                    <small class="text-danger" *ngif="formPoll.get('email').errors?.required">Email address
+                        is required</small>
+                    <small class="text-danger" *ngif="formPoll.get('email').errors?.email">Email address is
+                        invalid</small>
+                </div>
             </div>
             <button type="submit" class="btn btn-primary">Enviar</button>
         </form>
