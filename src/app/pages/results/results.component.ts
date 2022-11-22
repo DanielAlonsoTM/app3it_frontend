@@ -8,15 +8,18 @@ import { PollService } from '../../services/PollService';
 })
 export class ResultsComponent implements OnInit {
 
-  genres: any[] = [
-    { type: 'rock', total: 0 },
-    { type: 'pop', total: 0 },
-    { type: 'clasica', total: 0 }
+  public chart: any;
+
+  public genres: any[] = [
+    { type: 'rock', total: 0, displayName: 'Rock' },
+    { type: 'pop', total: 0, displayName: 'Pop' },
+    { type: 'clasica', total: 0, displayName: 'Clásica' }
   ];
 
   constructor(public pollService: PollService) { }
 
   ngOnInit(): void {
+
     this.pollService.getResults().subscribe({
       complete: () => {
         console.log('Success GET');
@@ -37,5 +40,4 @@ export class ResultsComponent implements OnInit {
       }
     });
   }
-
 }

@@ -10,11 +10,11 @@ import { PollService } from '../../services/PollService';
 })
 export class PollComponent implements OnInit {
 
-  formPoll!: FormGroup;
-  titleAlert: string = 'This field is required';
-  genreSelected: string = '';
+  public formPoll!: FormGroup;
+  public titleAlert: string = 'This field is required';
+  public genreSelected: string = '';
 
-  genres: any[] = [
+  public genres: any[] = [
     { value: 'rock', viewValue: 'Rock' },
     { value: 'pop', viewValue: 'Pop' },
     { value: 'clasica', viewValue: 'Clásica' },

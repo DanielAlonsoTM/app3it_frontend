@@ -1,5 +1,3 @@
 <div>
-    <p>Rock: {{genres[0].total}}</p>
-    <p>Pop: {{genres[1].total}}</p>
-    <p>Clasica: {{genres[2].total}}</p>
+    <p *ngFor="let genre of genres">{{genre.displayName}}: {{genre.total}}</p>
 </div>
