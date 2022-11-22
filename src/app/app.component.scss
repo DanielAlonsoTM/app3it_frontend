@@ -7,13 +7,16 @@
     }
 
     height: 100vh;
-
-    width:100%;
-    float:right;
+    width: 100%;
+    float: right;
 }
 
-router-outlet.router-flex + * {
+router-outlet.router-flex+* {
     display: flex;
     flex: 1 1 auto;
     flex-direction: column;
+}
+
+app-results.container {
+    max-width: initial!important;
 }
