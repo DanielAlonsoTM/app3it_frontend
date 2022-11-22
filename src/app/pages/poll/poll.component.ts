@@ -39,44 +39,42 @@ export class PollComponent implements OnInit {
       'genre': this.formPoll.value['genre']
     };
 
-    console.log(body);
-
-    if (body) {
-      if (body.genre === 'default' || body.genre === '') {
-        this.toast.error({ detail: 'Error', summary: 'Se debe seleccionar un valor para estilo de música', duration: 3000 });
-      } else {
-        this.pollService.addPoll(body).subscribe(
-          {
-            complete: () => {
-              console.log('Success POST');
-            },
-            error: (error) => {
-              console.log(JSON.stringify(error));
-              let message = error.error.text || 'Error desconocido';
-
-              this.toast.error({ detail: 'Error', summary: message, duration: 3000 });
-            },
-            next: (resp) => {
-              if (resp.statusMessage === 'Already exists') {
-                this.toast.warning({
-                  detail: 'Registro ya ingresado',
-                  summary: 'El email en uso, ya ha sido registrado previamente',
-                  duration: 5000
-                });
-
-              } else {
-                this.toast.success({
-                  detail: 'Solicitud exitosa',
-                  summary: 'Se ha agregado el registro correctamene',
-                  duration: 5000
-                });
-              }
-            },
-          }
-        );
-      }
+    if (body.genre === undefined || body.genre === 'default' || body.genre === '') {
+      this.toast.error({ detail: 'Error', summary: 'Se debe seleccionar un valor para estilo de música', duration: 3000 });
+    
+    } else if (body.email === undefined || body.email === '') {
+      this.toast.error({ detail: 'Error', summary: 'Error en formato de correo', duration: 3000 });
+    
     } else {
-      this.toast.error({ detail: 'Error', summary: 'Error en formulario', duration: 3000 });
+      this.pollService.addPoll(body).subscribe(
+        {
+          complete: () => {
+            console.log('Success POST');
+          },
+          error: (error) => {
+            console.log(JSON.stringify(error));
+            let message = error.error.text || 'Error desconocido';
+
+            this.toast.error({ detail: 'Error', summary: message, duration: 3000 });
+          },
+          next: (resp) => {
+            if (resp.statusMessage === 'Already exists') {
+              this.toast.warning({
+                detail: 'Registro ya ingresado',
+                summary: 'El email en uso, ya ha sido registrado previamente',
+                duration: 5000
+              });
+
+            } else {
+              this.toast.success({
+                detail: 'Solicitud exitosa',
+                summary: 'Se ha agregado el registro correctamene',
+                duration: 5000
+              });
+            }
+          },
+        }
+      );
     }
   }
 }
