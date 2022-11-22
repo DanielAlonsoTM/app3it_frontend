@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { PollService } from '../../services/PollService';
 
@@ -10,7 +10,7 @@ import { PollService } from '../../services/PollService';
 })
 export class PollComponent implements OnInit {
 
-  public formPoll!: FormGroup;
+  public formPoll!: UntypedFormGroup;
   public titleAlert: string = 'This field is required';
   public genreSelected: string = '';
 
@@ -20,7 +20,7 @@ export class PollComponent implements OnInit {
     { value: 'clasica', viewValue: 'Clásica' },
   ];
 
-  constructor(private formBuilder: FormBuilder, public pollService: PollService) { }
+  constructor(private formBuilder: UntypedFormBuilder, public pollService: PollService) { }
 
   ngOnInit() {
     this.createForm();

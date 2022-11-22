@@ -107,5 +107,7 @@
       }
     }
   },
-  "defaultProject": "app3it_frontend"
+  "cli": {
+    "analytics": false
+  }
 }
