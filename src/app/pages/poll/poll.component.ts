@@ -1,6 +1,5 @@
-import { Component, OnInit, TemplateRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
-import { Observable } from 'rxjs';
 import { PollService } from '../../services/poll.service';
 import { NgToastService } from 'ng-angular-popup';
 
