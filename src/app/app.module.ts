@@ -1,22 +1,19 @@
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
-
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
-
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { HomeComponent } from './pages/home/home.component';
-import { ResultsComponent } from './pages/results/results.component';
-import { PollComponent } from './pages/poll/poll.component';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
-import { HttpClientModule } from '@angular/common/http';
+import { AppComponent } from './app.component';
+import { AppRoutingModule } from './app-routing.module';
+import { HomeComponent } from './pages/home/home.component';
+import { PollComponent } from './pages/poll/poll.component';
+import { ResultsComponent } from './pages/results/results.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
 
 import { PollService } from './services/PollService';
-import { SidebarComponent } from './components/sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
