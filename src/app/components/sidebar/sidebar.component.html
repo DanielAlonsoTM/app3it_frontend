@@ -1,7 +1,7 @@
 <div class="sidebar" [ngClass]="{ 'expanded': isExpanded }">
     <div class="header">
         <h1 class="title">
-            deskbird
+            Menu
         </h1>
         <div class="toggle" (click)="handleSidebarToggle()">
             <span class="chevron"></span>
@@ -17,13 +17,13 @@
         
         <div class="link">
             <div class="content" [routerLink]="['/poll']" [routerLinkActive]="'active'">
-                <div class="title">Poll</div>
+                <div class="title">Encuesta</div>
             </div>
         </div>
 
         <div class="link">
             <div class="content" [routerLink]="['/results']" [routerLinkActive]="'active'">
-                <div class="title">Results</div>
+                <div class="title">Resultados</div>
             </div>
         </div>
     </div>

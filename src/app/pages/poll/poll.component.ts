@@ -10,9 +10,9 @@ import { PollService } from '../../services/PollService';
 })
 export class PollComponent implements OnInit {
 
-  formGroup!: FormGroup;
+  formPoll!: FormGroup;
   titleAlert: string = 'This field is required';
-  post: any = '';
+  genreSelected: string = '';
 
   genres: any[] = [
     { value: 'rock', viewValue: 'Rock' },
@@ -28,9 +28,9 @@ export class PollComponent implements OnInit {
 
   createForm() {
     let emailregex: RegExp = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-    this.formGroup = this.formBuilder.group({
+    this.formPoll = this.formBuilder.group({
       'email': [null, [Validators.required, Validators.pattern(emailregex)], this.checkInUseEmail],
-      'color': this.formBuilder.control('')
+      'genre': [null, Validators.required]
     });
   }
 
@@ -47,26 +47,33 @@ export class PollComponent implements OnInit {
   }
 
   getErrorEmail() {
-    return this.formGroup.get('email')!.hasError('required') ? 'Field is required' :
-      this.formGroup.get('email')!.hasError('pattern') ? 'Not a valid emailaddress' :
-        this.formGroup.get('email')!.hasError('alreadyInUse') ? 'This emailaddress is already in use' : '';
+    return this.formPoll.get('email')!.hasError('required') ? 'Field is required' :
+      this.formPoll.get('email')!.hasError('pattern') ? 'Not a valid emailaddress' :
+        this.formPoll.get('email')!.hasError('alreadyInUse') ? 'This emailaddress is already in use' : '';
   }
 
-  onSubmit(post: any) {
-    this.post = post;
+  onSubmit() {
+    let body = {
+      'email': this.formPoll.value['email'],
+      'genre': this.formPoll.value['genre']
+    };
 
-    this.pollService.addPoll(post).subscribe(
-      {
-        complete: () => {
-          console.log('Success POST');
-        },
-        error: (error) => {
-          console.log(error)
-        },
-        next: (resp) => {
-          console.log(resp);
-        },
-      }
-    );
+    if (body) {
+      console.log(body);
+
+      this.pollService.addPoll(body).subscribe(
+        {
+          complete: () => {
+            console.log('Success POST');
+          },
+          error: (error) => {
+            console.log(error);
+          },
+          next: (resp) => {
+            console.log(resp);
+          },
+        }
+      );
+    }
   }
 }

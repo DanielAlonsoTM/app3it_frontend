@@ -1,18 +1,15 @@
-<div class="container" *ngIf="!post; else forminfo" novalidate>
-    <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value)" class="form">
-
-
-
-        <div class="form-element">
-            <button mat-raised-button color="primary" type="submit" class="button" [disabled]="!formGroup.valid">Submit
-                Form</button>
-        </div>
-
-    </form>
-</div>
-
-<ng-template #forminfo>
-    <div class="container">
-        {{ post | json }}
+<form [formGroup]="formPoll" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+        <label>email</label>
+        <input type="email" formControlName="email" class="form-control" maxlength="20">
     </div>
-</ng-template>
+    <div class="form-group">
+        <label>Estilo</label>
+        <select formControlName="genre" class="form-control">
+            <option *ngFor="let genre of genres" [ngValue]="genre.value">
+                {{ genre.viewValue }}
+            </option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>

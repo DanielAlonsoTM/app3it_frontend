@@ -7,7 +7,7 @@ import { Poll } from "../shared/poll";
     providedIn: 'root'
 })
 export class PollService {
-    private baseURL = 'http://localhost:8080/polls';
+    private baseURL = 'http://localhost:8080/api';
 
     constructor(private http: HttpClient) { }
 
@@ -20,7 +20,7 @@ export class PollService {
     addPoll(data: any): Observable<Poll> {
         return this.http
             .post<Poll>(
-                this.baseURL + '/add',
+                `${this.baseURL}/polls/add`,
                 JSON.stringify(data),
                 this.httpOptions);
     }
@@ -28,7 +28,7 @@ export class PollService {
     getResults(): Observable<Poll[]> {
         return this.http
             .get<Poll[]>(
-                this.baseURL,
+                `${this.baseURL}/polls`,
                 this.httpOptions
             );
     }

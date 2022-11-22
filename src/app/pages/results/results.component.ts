@@ -8,6 +8,12 @@ import { PollService } from '../../services/PollService';
 })
 export class ResultsComponent implements OnInit {
 
+  genres: any[] = [
+    { type: 'rock', total: 0 },
+    { type: 'pop', total: 0 },
+    { type: 'clasica', total: 0 }
+  ];
+
   constructor(public pollService: PollService) { }
 
   ngOnInit(): void {
@@ -18,8 +24,16 @@ export class ResultsComponent implements OnInit {
       error: (error) => {
         console.log(error);
       },
-      next: (resp) => { 
-        console.log(resp);
+      next: (resp) => {
+        let polls = resp;
+
+        polls.map((poll) => {
+          this.genres.map((genre) => {
+            if (poll.genre === genre.type) {
+              genre.total++;
+            }
+          });
+        });
       }
     });
   }
