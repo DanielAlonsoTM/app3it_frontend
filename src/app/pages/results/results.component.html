@@ -1,9 +1,7 @@
-<div>
-    <p *ngFor="let genre of genres">{{genre.displayName}}: {{genre.total}}</p>
-</div>
+<div class="container">
 
+    <h1>Resultados</h1>
 
-<div>
     <div>
         <div style="display: block">
             <canvas baseChart [data]="barChartData" [options]="barChartOptions" [type]="barChartType"

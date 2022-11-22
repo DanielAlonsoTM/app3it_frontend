@@ -32,7 +32,7 @@ export class ResultsComponent implements OnInit {
     },
     plugins: {
       legend: {
-        display: true,
+        display: false
       }
     }
   };
@@ -67,7 +67,12 @@ export class ResultsComponent implements OnInit {
         // Load data
         this.barChartData = {
           datasets: [
-            { data: this.genres.map((genre) => genre.total), label: 'Estilos' }
+            {
+              data: this.genres.map((genre) => genre.total),
+              label: 'Estilos',
+              backgroundColor: ['white', 'white', 'white'],
+
+            }
           ]
         };
       }
