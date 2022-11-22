@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { PollService } from '../../services/PollService';
+import { PollService } from '../../services/poll.service';
 
 @Component({
   selector: 'app-poll',

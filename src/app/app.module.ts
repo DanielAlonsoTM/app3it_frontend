@@ -14,7 +14,7 @@ import { PollComponent } from './pages/poll/poll.component';
 import { ResultsComponent } from './pages/results/results.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 
-import { PollService } from './services/PollService';
+import { PollService } from './services/poll.service';
 
 @NgModule({
   declarations: [
