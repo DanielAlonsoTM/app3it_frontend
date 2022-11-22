@@ -1,21 +1,22 @@
 <div class="container">
+    <div class="child">
+        <h1>Encuesta</h1>
 
-    <h1>Encuesta</h1>
+        <form [formGroup]="formPoll" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <label>Estilo Musical</label>
+                <select formControlName="genre" class="form-control">
+                    <option *ngFor="let genre of genres" [ngValue]="genre.value">
+                        {{ genre.viewValue }}
+                    </option>
+                </select>
+            </div>
 
-    <form [formGroup]="formPoll" (ngSubmit)="onSubmit()">
-        <div class="form-group">
-            <label>Estilo Musical</label>
-            <select formControlName="genre" class="form-control">
-                <option *ngFor="let genre of genres" [ngValue]="genre.value">
-                    {{ genre.viewValue }}
-                </option>
-            </select>
-        </div>
-
-        <div class="form-group">
-            <label>Correo Electronico</label>
-            <input type="email" formControlName="email" class="form-control" maxlength="20">
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
+            <div class="form-group">
+                <label>Correo Electronico</label>
+                <input type="email" formControlName="email" class="form-control" maxlength="20">
+            </div>
+            <button type="submit" class="btn btn-primary">Enviar</button>
+        </form>
+    </div>
 </div>

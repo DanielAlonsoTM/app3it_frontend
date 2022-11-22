@@ -1,12 +1,13 @@
 <div class="container">
+    <div class="child">
+        <h1>Resultados</h1>
 
-    <h1>Resultados</h1>
-
-    <div>
-        <div style="display: block">
-            <canvas baseChart [data]="barChartData" [options]="barChartOptions" [type]="barChartType"
-                (chartHover)="chartHovered($event)">
-            </canvas>
+        <div>
+            <div style="display: block">
+                <canvas baseChart [data]="barChartData" [options]="barChartOptions" [type]="barChartType"
+                    (chartHover)="chartHovered($event)">
+                </canvas>
+            </div>
         </div>
     </div>
 </div>

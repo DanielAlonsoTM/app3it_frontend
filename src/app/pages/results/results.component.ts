@@ -71,7 +71,6 @@ export class ResultsComponent implements OnInit {
               data: this.genres.map((genre) => genre.total),
               label: 'Estilos',
               backgroundColor: ['white', 'white', 'white'],
-
             }
           ]
         };

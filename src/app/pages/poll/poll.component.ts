@@ -2,6 +2,7 @@ import { Component, OnInit, TemplateRef } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { PollService } from '../../services/poll.service';
+import { NgToastService } from 'ng-angular-popup';
 
 @Component({
   selector: 'app-poll',
@@ -20,7 +21,7 @@ export class PollComponent implements OnInit {
     { value: 'clasica', viewValue: 'Clásica' },
   ];
 
-  constructor(private formBuilder: UntypedFormBuilder, public pollService: PollService) { }
+  constructor(private formBuilder: UntypedFormBuilder, public pollService: PollService, private toast: NgToastService) { }
 
   ngOnInit() {
     this.createForm();
@@ -59,18 +60,32 @@ export class PollComponent implements OnInit {
     };
 
     if (body) {
-      console.log(body);
-
       this.pollService.addPoll(body).subscribe(
         {
           complete: () => {
             console.log('Success POST');
           },
           error: (error) => {
-            console.log(error);
+            console.log(JSON.stringify(error));
+            let message = error.error.text || 'Error desconocido';
+
+            this.toast.error({ detail: 'Error', summary: message, duration: 3000 });
           },
           next: (resp) => {
-            console.log(resp);
+            if (resp.statusMessage === 'Already exists') {
+              this.toast.warning({
+                detail: 'Registro ya ingresado',
+                summary: 'El email en uso, ya ha sido registrado previamente',
+                duration: 5000
+              });
+
+            } else {
+              this.toast.success({
+                detail: 'Solicitud exitosa',
+                summary: 'Se ha agregado el registro correctamene',
+                duration: 5000
+              });
+            }
           },
         }
       );

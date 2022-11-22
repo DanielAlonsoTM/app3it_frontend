@@ -13,13 +13,14 @@ export class PollService {
 
     private httpOptions = {
         headers: new HttpHeaders({
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            responseType: 'text'
         })
     };
 
-    addPoll(data: any): Observable<Poll> {
+    addPoll(data: any): Observable<any> {
         return this.http
-            .post<Poll>(
+            .post<any>(
                 `${this.baseURL}/polls/add`,
                 JSON.stringify(data),
                 this.httpOptions);

@@ -6,6 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { NgChartsModule } from 'ng2-charts';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgToastModule } from 'ng-angular-popup';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -32,7 +33,8 @@ import { PollService } from './services/poll.service';
     BrowserAnimationsModule,
     HttpClientModule,
     NgbModule,
-    NgChartsModule
+    NgChartsModule,
+    NgToastModule
   ],
   providers: [PollService],
   bootstrap: [AppComponent]
